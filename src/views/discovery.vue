@@ -454,7 +454,8 @@ export default {
           .song-name {
           }
           .singer {
-            font-size: 15px;
+            font-size: 14px;
+            color:gray;
           }
         }
       }
