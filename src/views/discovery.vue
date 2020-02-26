@@ -518,6 +518,7 @@ export default {
         .info-wrap {
           .name {
             font-size: 15px;
+            margin-bottom: 5px;
           }
           .singer {
             font-size: 14px;
