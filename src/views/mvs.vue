@@ -76,7 +76,7 @@
             <div class="singer">余恩</div>
           </div>
         </div>
-            <div class="item">
+        <div class="item">
           <div class="img-wrap">
             <img src="../assets/mvCover.jpg" alt="" />
             <div class="num-wrap">
@@ -88,7 +88,8 @@
             <div class="name">HEYNA</div>
             <div class="singer">余恩</div>
           </div>
-        </div>    <div class="item">
+        </div>
+        <div class="item">
           <div class="img-wrap">
             <img src="../assets/mvCover.jpg" alt="" />
             <div class="num-wrap">
@@ -141,6 +142,17 @@
           </div>
         </div>
       </div>
+      <!-- 分页器 -->
+      <el-pagination
+        @current-change="handleCurrentChange"
+        background
+        layout="prev, pager, next"
+        :total="total"
+        :current-page="page"
+        :page-size="5"
+        :limit="limit"
+      >
+      </el-pagination>
     </div>
   </div>
 </template>
@@ -148,9 +160,22 @@
 <script>
 export default {
   name: 'mvs',
-  methods:{
-    toMv(id){
-      this.$router.push(`/mv?id=${id}`)
+  data() {
+    return {
+      // 总条数
+      total: 20,
+      // 页码
+      page: 1,
+      // 页容量
+      limit: 10
+    };
+  },
+  methods: {
+    toMv(id) {
+      this.$router.push(`/mv?id=${id}`);
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
     }
   }
 };

@@ -106,6 +106,7 @@
         :total="total"
         :current-page="page"
         :page-size="5"
+        :limit="limit"
       >
       </el-pagination>
     </div>
@@ -140,9 +141,11 @@ export default {
   data() {
     return {
       // 总条数
-      total: 0,
+      total: 20,
       // 页码
-      page: 1
+      page: 1,
+      // 页容量
+      limit:10
     };
   },
   methods: {
