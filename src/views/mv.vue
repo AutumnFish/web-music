@@ -19,6 +19,7 @@
           <h2 class="title">TF BOYS LIVE 秀 王源《淘汰》</h2>
           <span class="date">发布：2014-11-04</span>
           <span class="number">播放：94526次</span>
+          <p class="desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur saepe aut officia itaque exercitationem culpa facere doloremque voluptates id non nam, aliquid ipsum laborum odit accusantium dolorem eligendi veniam dolore ea aperiam labore cupiditate et a. Necessitatibus eaque blanditiis possimus nobis ullam reprehenderit animi, vero reiciendis eos, deleniti commodi, consequatur dolorem iusto. Assumenda doloribus soluta temporibus ut dolorum corporis quos! Quisquam consectetur dolore iste quo praesentium dolorum excepturi, at sapiente pariatur quis! Neque ex cum, nobis aspernatur temporibus, voluptates at obcaecati dolore est repudiandae, veniam laborum fuga corrupti illum ut. Ad a tempore sint adipisci vero, delectus ducimus debitis molestias!</p>
         </div>
       </div>
       <!-- 精彩评论 -->
@@ -196,6 +197,10 @@ export default {
       .mv-info {
         .title {
           font-size: 30px;
+        }
+        .desc {
+          font-size: 15px;
+          margin-top: 20px;
         }
       }
     }
