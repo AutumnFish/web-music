@@ -163,11 +163,12 @@
     </div>
     <!-- 分页器 -->
     <el-pagination
-      @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       background
       layout="prev, pager, next"
-      :total="1000"
+      :total="total"
+      :current-page="page"
+      :page-size="20"
     >
     </el-pagination>
   </div>
@@ -177,12 +178,14 @@
 export default {
   name: 'recommend',
   data() {
-    return {};
+    return {
+      // 总条数
+      total:0,
+      // 页码
+      page:1
+    };
   },
   methods: {
-    handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
-    },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     }
@@ -340,12 +343,6 @@ export default {
       }
     }
   }
-  .el-pagination{
-    margin-top: 50px;
-    text-align: center;
-  }
-  .el-pagination.is-background .el-pager li:not(.disabled).active{
-    background-color: #dd6d60;
-  }
+
 }
 </style>

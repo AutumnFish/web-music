@@ -36,7 +36,7 @@
     </div>
     <el-tabs v-model="activeIndex">
       <el-tab-pane label="歌曲列表" name="1">
-        <el-table class='song-table' :data="tableData">
+        <el-table class="song-table" :data="tableData">
           <el-table-column type="index"></el-table-column>
           <el-table-column width="100" label="">
             <template slot-scope="scope">
@@ -60,8 +60,16 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column width="280" prop="singer" label="歌手"></el-table-column>
-          <el-table-column width="280" prop="albumName" label="专辑"></el-table-column>
+          <el-table-column
+            width="280"
+            prop="singer"
+            label="歌手"
+          ></el-table-column>
+          <el-table-column
+            width="280"
+            prop="albumName"
+            label="专辑"
+          ></el-table-column>
           <el-table-column prop="duration" label="时长"></el-table-column>
         </el-table>
       </el-tab-pane>
@@ -142,6 +150,16 @@
             </div>
           </div>
         </div>
+        <!-- 分页器 -->
+        <el-pagination
+          @current-change="handleCurrentChange"
+          background
+          layout="prev, pager, next"
+          :total="total"
+          :current-page="page"
+          :page-size="20"
+        >
+        </el-pagination>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -182,8 +200,17 @@ export default {
           duration: '03:43',
           hasMV: 1
         }
-      ]
+      ],
+      // 总条数
+      total: 0,
+      // 页码
+      page: 1
     };
+  },
+  methods: {
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+    }
   }
 };
 </script>
@@ -328,6 +355,5 @@ export default {
       }
     }
   }
-
 }
 </style>
