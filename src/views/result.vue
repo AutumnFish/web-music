@@ -256,7 +256,6 @@
               <div class="singer">余恩</div>
             </div>
           </div>
-
         </div>
       </el-tab-pane>
     </el-tabs>
@@ -330,7 +329,7 @@ export default {
     flex-wrap: wrap;
     justify-content: flex-start;
     .item {
-      width: 250px;
+      width: 200px;
       cursor: pointer;
       margin-right: 20px;
       margin-bottom: 20px;
@@ -369,7 +368,7 @@ export default {
           top: 0;
           right: 0;
           display: flex;
-          align-content: center;
+          align-items: center;
           font-size: 15px;
           padding-right: 5px;
           padding-top: 2px;
@@ -388,14 +387,13 @@ export default {
           font-size: 15px;
         }
       }
-      .info-wrap {
-        .name {
-          font-size: 15px;
-        }
-        .singer {
-          font-size: 14px;
-          color: #c5c5c5;
-        }
+      .name {
+        font-size: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
       }
     }
   }
