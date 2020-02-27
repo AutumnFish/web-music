@@ -97,6 +97,16 @@
           </div>
         </div>
       </div>
+      <!-- 分页器 -->
+      <el-pagination
+        @current-change="handleCurrentChange"
+        background
+        layout="prev, pager, next"
+        :total="total"
+        :current-page="page"
+        :page-size="5"
+      >
+      </el-pagination>
     </div>
     <div class="mv-recommend">
       <h3 class="title">相关推荐</h3>
@@ -125,7 +135,20 @@
 
 <script>
 export default {
-  name: 'mv'
+  name: 'mv',
+  data() {
+    return {
+      // 总条数
+      total: 0,
+      // 页码
+      page: 1
+    };
+  },
+  methods: {
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+    }
+  }
 };
 </script>
 
@@ -201,7 +224,6 @@ export default {
             border-bottom: 1px solid #f2f2f1;
           }
         }
-      
 
         .content-wrap {
           padding-bottom: 20px;

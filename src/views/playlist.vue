@@ -157,7 +157,7 @@
           layout="prev, pager, next"
           :total="total"
           :current-page="page"
-          :page-size="20"
+          :page-size="5"
         >
         </el-pagination>
       </el-tab-pane>
