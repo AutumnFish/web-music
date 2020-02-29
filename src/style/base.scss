@@ -1001,13 +1001,13 @@ ol {
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
       }
-      .singer{
+      .singer {
         font-size: 14px;
         color: #c5c5c5;
       }
     }
-    &.mv{
-      .item{
+    &.mv {
+      .item {
         width: 250px;
       }
     }
@@ -1067,5 +1067,145 @@ ol {
         }
       }
     }
+  }
+}
+.index-container {
+  display: flex;
+  .nav {
+    background-color: #ededed;
+    width: 200px;
+    height: 100%;
+    li {
+      height: 60px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      &:hover {
+        background-color: #e7e7e7;
+      }
+      .iconfont {
+        margin-right: 10px;
+        font-size: 20px;
+      }
+      a {
+        color: black;
+        padding-left: 30px;
+        font-size: 18px;
+        line-height: 60px;
+        width: 100%;
+        height: 100%;
+        &.router-link-active {
+          color: #dd6d60;
+          .iconfont {
+            color: #dd6d60;
+          }
+        }
+      }
+    }
+  }
+  .main {
+    flex: 1;
+    overflow-y: scroll;
+    padding: 10px 20px;
+    > div {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+  }
+  .player {
+    background: #f1f3f4;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  audio {
+    width: 100%;
+    border-radius: none;
+    outline: none;
+  }
+}
+.top-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: #f9f9f9;
+  width: 100%;
+  .left-box {
+    display: flex;
+    // 图标
+    .icon-wrapper {
+      margin-right: 80px;
+      .iconfont {
+        margin-right: 10px;
+        font-size: 12px;
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+        text-align: center;
+        line-height: 18px;
+        &::before {
+          opacity: 0;
+          transition: 0.2s;
+        }
+        &:hover::before {
+          opacity: 1;
+        }
+        &.icon-home {
+          background-color: #dd6d60;
+          border-radius: 50%;
+        }
+        &.icon-sami-select {
+          background-color: #dcc060;
+          border-radius: 50%;
+        }
+        &.icon-full-screen {
+          background-color: #84bb58;
+          border-radius: 50%;
+        }
+      }
+    }
+    // 历史管理
+    .history-wrapper {
+      display: flex;
+      align-items: center;
+      .iconfont {
+        width: 35px;
+        height: 35px;
+        font-size: 30px;
+        text-align: center;
+        line-height: 35px;
+        color: gray;
+        border-radius: 50%;
+        transition: 0.2s;
+        cursor: pointer;
+        &:first-child {
+          margin-right: 10px;
+        }
+        &:hover {
+          background-color: #ebebeb;
+        }
+      }
+    }
+  }
+  .right-box {
+    display: flex;
+    align-items: center;
+  }
+}
+#app {
+  height: 100%;
+  .top-container {
+    height: 60px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  .index-container {
+    height: 100%;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 }
