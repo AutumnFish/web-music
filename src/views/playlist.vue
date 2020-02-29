@@ -36,42 +36,59 @@
     </div>
     <el-tabs v-model="activeIndex">
       <el-tab-pane label="歌曲列表" name="1">
-        <el-table class="song-table" :data="tableData">
-          <el-table-column type="index"></el-table-column>
-          <el-table-column width="100" label="">
-            <template slot-scope="scope">
-              <div class="img-wrap">
-                <img :src="scope.row.img" alt="" />
-                <span class="iconfont icon-play"></span>
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column width="280" label="音乐标题">
-            <template slot-scope="scope">
-              <div class="song-wrap">
-                <div class="name-wrap">
-                  <span>{{ scope.row.songName }}</span>
-                  <span
-                    v-if="scope.row.hasMV != 0"
-                    class="iconfont icon-mv"
-                  ></span>
+        <table class="el-table playlit-table">
+          <thead>
+            <th></th>
+            <th></th>
+            <th>音乐标题</th>
+            <th>歌手</th>
+            <th>专辑</th>
+            <th>时长</th>
+          </thead>
+          <tbody>
+            <tr class="el-table__row">
+              <td>1</td>
+              <td>
+                <div class="img-wrap">
+                  <img src="../assets/songCover.jpg" alt="" />
+                  <span class="iconfont icon-play"></span>
                 </div>
-                <span>{{ scope.row.subTitle }}</span>
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column
-            width="280"
-            prop="singer"
-            label="歌手"
-          ></el-table-column>
-          <el-table-column
-            width="280"
-            prop="albumName"
-            label="专辑"
-          ></el-table-column>
-          <el-table-column prop="duration" label="时长"></el-table-column>
-        </el-table>
+              </td>
+              <td>
+                <div class="song-wrap">
+                  <div class="name-wrap">
+                    <span>你要相信这不是最后一天</span>
+                    <span class="iconfont icon-mv"></span>
+                  </div>
+                  <span>电视剧加油练习生插曲</span>
+                </div>
+              </td>
+              <td>华晨宇</td>
+              <td>你要相信这不是最后一天</td>
+              <td>06:03</td>
+            </tr>
+            <tr class="el-table__row">
+              <td>2</td>
+               <td>
+                <div class="img-wrap">
+                  <img src="../assets/songCover.jpg" alt="" />
+                  <span class="iconfont icon-play"></span>
+                </div>
+              </td>
+              <td>
+                <div class="song-wrap">
+                  <div class="name-wrap">
+                    <span>你要相信这不是最后一天</span>
+                    <span class="iconfont icon-mv"></span>
+                  </div>
+                </div>
+              </td>
+              <td>华晨宇</td>
+              <td>你要相信这不是最后一天</td>
+              <td>06:03</td>
+            </tr>
+          </tbody>
+        </table>
       </el-tab-pane>
       <el-tab-pane label="评论(66)" name="2">
         <!-- 精彩评论 -->
@@ -171,36 +188,6 @@ export default {
   data() {
     return {
       activeIndex: '1',
-      tableData: [
-        {
-          img:
-            'http://p3.music.126.net/sL4dfIANkKupkJvPipmd5g==/109951164736488659.jpg?param=120y120',
-          songName: '你要相信这不是最后一天',
-          subTitle: '电视剧《加油吧实习生》插曲',
-          singer: '华晨宇',
-          albumName: '你要相信这不是最后一天',
-          duration: '06:03',
-          hasMV: 0
-        },
-        {
-          img:
-            'http://p4.music.126.net/76Hpk_9ot2h2dozv5JbbYA==/109951164737016168.jpg?param=120y120',
-          songName: 'Tomorrow will be fine.',
-          singer: 'Sodagreen',
-          albumName: 'Tomorrow will be fine.',
-          duration: '04:59',
-          hasMV: 1
-        },
-        {
-          img:
-            'http://p4.music.126.net/QI_lE_SlqUXa51z56qcOSw==/109951164732550113.jpg?param=120y120',
-          songName: '误解',
-          singer: '戴佩妮',
-          albumName: '误解',
-          duration: '03:43',
-          hasMV: 1
-        }
-      ],
       // 总条数
       total: 0,
       // 页码

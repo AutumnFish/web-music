@@ -44,13 +44,40 @@ ol {
 .el-pagination.is-background .el-pager li:not(.disabled).active{
   background-color: #dd6d60;
 }
-.song-table {
+.el-table {
   border-bottom: none;
+  border-collapse: collapse;
+  &.playlit-table{
+    th:nth-child(2){
+      width: 130px;
+    }
+    th:nth-child(3){
+      width:300px;
+    }
+    th:nth-child(4){
+      width:200px;
+    }
+  }
   tbody{
     border-bottom: none;
   }
   td{
     border-bottom: none;
+    &:first-child{
+      padding-left: 10px;
+    }
+  }
+  th{
+    font-weight: normal;
+    &:first-child{
+      width: 50px;
+    }
+    &:nth-child(2){
+      width:300px;
+    }
+    &:nth-child(3){
+      width:200px;
+    }
   }
   .song-wrap {
     > span {
@@ -89,6 +116,14 @@ ol {
       &::before {
         transform: translateX(1px);
       }
+    }
+  }
+  tr{
+    &:nth-child(2n){
+      background-color: #fafafa;
+    }
+    &:hover{
+      background-color: #f5f7fa;
     }
   }
 }

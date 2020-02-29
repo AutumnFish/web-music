@@ -6,92 +6,50 @@
     </div>
     <el-tabs v-model="activeIndex">
       <el-tab-pane label="歌曲" name="songs">
-        <el-table stripe class="song-table" :data="tableData">
-          <el-table-column type="index"></el-table-column>
-          <el-table-column width="280" label="音乐标题">
-            <template slot-scope="scope">
-              <div class="song-wrap">
-                <div class="name-wrap">
-                  <span>{{ scope.row.songName }}</span>
-                  <span
-                    v-if="scope.row.hasMV != 0"
-                    class="iconfont icon-mv"
-                  ></span>
+        <table class="el-table">
+          <thead>
+            <th></th>
+            <th>音乐标题</th>
+            <th>歌手</th>
+            <th>专辑</th>
+            <th>时长</th>
+          </thead>
+          <tbody>
+            <tr class="el-table__row">
+              <td>1</td>
+              <td>
+                <div class="song-wrap">
+                  <div class="name-wrap">
+                    <span>你要相信这不是最后一天</span>
+                    <span class="iconfont icon-mv"></span>
+                  </div>
+                  <span>电视剧加油练习生插曲</span>
                 </div>
-                <span>{{ scope.row.subTitle }}</span>
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column
-            width="280"
-            prop="singer"
-            label="歌手"
-          ></el-table-column>
-          <el-table-column
-            width="280"
-            prop="albumName"
-            label="专辑"
-          ></el-table-column>
-          <el-table-column prop="duration" label="时长"></el-table-column>
-        </el-table>
+              </td>
+              <td>华晨宇</td>
+              <td>你要相信这不是最后一天</td>
+              <td>06:03</td>
+            </tr>
+            <tr class="el-table__row">
+              <td>2</td>
+              <td>
+                <div class="song-wrap">
+                  <div class="name-wrap">
+                    <span>你要相信这不是最后一天</span>
+                    <span class="iconfont icon-mv"></span>
+                  </div>
+                </div>
+              </td>
+              <td>华晨宇</td>
+              <td>你要相信这不是最后一天</td>
+              <td>06:03</td>
+            </tr>
+
+          </tbody>
+        </table>
       </el-tab-pane>
       <el-tab-pane label="歌单" name="lists">
         <div class="items">
-          <div class="item">
-            <div class="img-wrap">
-              <div class="num-wrap">
-                播放量:
-                <span class="num">66892</span>
-              </div>
-              <img src="../assets/cover.jpg" alt="" />
-              <span class="iconfont icon-play"></span>
-            </div>
-            <p class="name">编辑推荐：一起探索这个未知的音乐罐头吧！</p>
-          </div>
-          <div class="item">
-            <div class="img-wrap">
-              <div class="num-wrap">
-                播放量:
-                <span class="num">66892</span>
-              </div>
-              <img src="../assets/cover.jpg" alt="" />
-              <span class="iconfont icon-play"></span>
-            </div>
-            <p class="name">编辑推荐：一起探索这个未知的音乐罐头吧！</p>
-          </div>
-          <div class="item">
-            <div class="img-wrap">
-              <div class="num-wrap">
-                播放量:
-                <span class="num">66892</span>
-              </div>
-              <img src="../assets/cover.jpg" alt="" />
-              <span class="iconfont icon-play"></span>
-            </div>
-            <p class="name">编辑推荐：一起探索这个未知的音乐罐头吧！</p>
-          </div>
-          <div class="item">
-            <div class="img-wrap">
-              <div class="num-wrap">
-                播放量:
-                <span class="num">66892</span>
-              </div>
-              <img src="../assets/cover.jpg" alt="" />
-              <span class="iconfont icon-play"></span>
-            </div>
-            <p class="name">编辑推荐：一起探索这个未知的音乐罐头吧！</p>
-          </div>
-          <div class="item">
-            <div class="img-wrap">
-              <div class="num-wrap">
-                播放量:
-                <span class="num">66892</span>
-              </div>
-              <img src="../assets/cover.jpg" alt="" />
-              <span class="iconfont icon-play"></span>
-            </div>
-            <p class="name">编辑推荐：一起探索这个未知的音乐罐头吧！</p>
-          </div>
           <div class="item">
             <div class="img-wrap">
               <div class="num-wrap">
@@ -226,36 +184,6 @@
               <div class="singer">余恩</div>
             </div>
           </div>
-          <div class="item">
-            <div class="img-wrap">
-              <img src="../assets/mvCover.jpg" alt="" />
-              <span class="iconfont icon-play"></span>
-              <div class="num-wrap">
-                <div class="iconfont icon-play"></div>
-                <div class="num">9912</div>
-              </div>
-              <span class="time">02:43</span>
-            </div>
-            <div class="info-wrap">
-              <div class="name">HEYNA</div>
-              <div class="singer">余恩</div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img-wrap">
-              <img src="../assets/mvCover.jpg" alt="" />
-              <span class="iconfont icon-play"></span>
-              <div class="num-wrap">
-                <div class="iconfont icon-play"></div>
-                <div class="num">9912</div>
-              </div>
-              <span class="time">02:43</span>
-            </div>
-            <div class="info-wrap">
-              <div class="name">HEYNA</div>
-              <div class="singer">余恩</div>
-            </div>
-          </div>
         </div>
       </el-tab-pane>
     </el-tabs>
@@ -268,36 +196,7 @@ export default {
   data() {
     return {
       activeIndex: 'songs',
-      tableData: [
-        {
-          img:
-            'http://p3.music.126.net/sL4dfIANkKupkJvPipmd5g==/109951164736488659.jpg?param=120y120',
-          songName: '你要相信这不是最后一天',
-          subTitle: '电视剧《加油吧实习生》插曲',
-          singer: '华晨宇',
-          albumName: '你要相信这不是最后一天',
-          duration: '06:03',
-          hasMV: 0
-        },
-        {
-          img:
-            'http://p4.music.126.net/76Hpk_9ot2h2dozv5JbbYA==/109951164737016168.jpg?param=120y120',
-          songName: 'Tomorrow will be fine.',
-          singer: 'Sodagreen',
-          albumName: 'Tomorrow will be fine.',
-          duration: '04:59',
-          hasMV: 1
-        },
-        {
-          img:
-            'http://p4.music.126.net/QI_lE_SlqUXa51z56qcOSw==/109951164732550113.jpg?param=120y120',
-          songName: '误解',
-          singer: '戴佩妮',
-          albumName: '误解',
-          duration: '03:43',
-          hasMV: 1
-        }
-      ]
+ 
     };
   }
 };
