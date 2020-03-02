@@ -12,7 +12,9 @@
       <!-- mv信息 -->
       <div class="info-wrap">
         <div class="singer-info">
-          <img src="../assets/avatar.jpg" alt="" />
+          <div class="avatar-wrap">
+            <img src="../assets/avatar.jpg" alt="" />
+          </div>
           <span class="name">TF Boys</span>
         </div>
         <div class="mv-info">
@@ -169,6 +171,4 @@ export default {
 };
 </script>
 
-<style >
-
-</style>
+<style></style>
