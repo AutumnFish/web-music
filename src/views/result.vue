@@ -103,11 +103,11 @@
 </template>
 
 <script>
-import { search } from '@/api/result';
-import { songUrl } from '@/api/discovery';
+import { search } from '@/api/result'
+import { songUrl } from '@/api/discovery'
 export default {
   name: 'result',
-  data() {
+  data () {
     return {
       type: '1',
       // 页容量
@@ -119,46 +119,46 @@ export default {
       songList: [],
       playList: [],
       mvList: []
-    };
+    }
   },
   watch: {
     type: [
-      function() {
-        this.limit = this.type == '1004' ? 12 : 15;
+      function () {
+        this.limit = this.type == '1004' ? 12 : 15
       },
       'searchResult'
     ],
     '$route.query.keywords': 'searchResult'
   },
-  created() {
-    this.searchResult();
+  created () {
+    this.searchResult()
   },
   methods: {
-    toPlaylist(id) {
-      this.$router.push(`/playlist?id=${id}`);
+    toPlaylist (id) {
+      this.$router.push(`/playlist?id=${id}`)
     },
     // 双击某一行
-    rowDbclick(id) {
+    rowDbclick (id) {
       songUrl({
         id
       }).then(res => {
         // window.console.log(res)
         // this.songUrl = res.data[0].url
-        this.$parent.url = res.data[0].url;
-      });
+        this.$parent.url = res.data[0].url
+      })
     },
     // 去mv页面
-    toMV(mvid) {
-      this.$router.push(`/mv?id=${mvid}`);
+    toMV (mvid) {
+      this.$router.push(`/mv?id=${mvid}`)
     },
     // 页码改变
-    handleCurrentChange(val) {
-      this.page = val;
-      this.searchResult();
+    handleCurrentChange (val) {
+      this.page = val
+      this.searchResult()
     },
-    searchResult() {
-      const { limit, type } = this;
-      const { keywords } = this.$route.query;
+    searchResult () {
+      const { limit, type } = this
+      const { keywords } = this.$route.query
       search({
         limit,
         type,
@@ -169,23 +169,23 @@ export default {
         // 根据类型不同
         switch (this.type) {
           case '1':
-            this.songList = res.result.songs;
-            this.total = res.result.songCount;
-            break;
+            this.songList = res.result.songs
+            this.total = res.result.songCount
+            break
           case '1000':
-            this.playList = res.result.playlists;
-            this.total = res.result.playlistCount;
-            break;
+            this.playList = res.result.playlists
+            this.total = res.result.playlistCount
+            break
 
           default:
-            this.mvList = res.result.mvs;
-            this.total = res.result.mvCount;
-            break;
+            this.mvList = res.result.mvs
+            this.total = res.result.mvCount
+            break
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 
-<style lang="scss"></style>
+<style lang="less"></style>

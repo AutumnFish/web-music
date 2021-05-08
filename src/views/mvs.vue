@@ -167,10 +167,10 @@
 </template>
 
 <script>
-import { allMvs } from '@/api/mvs';
+import { allMvs } from '@/api/mvs'
 export default {
   name: 'mvs',
-  data() {
+  data () {
     return {
       area: '全部',
       type: '全部',
@@ -183,39 +183,39 @@ export default {
       total: 0,
       // mv列表数据
       mvList: []
-    };
+    }
   },
-  created() {
-    this.getData();
+  created () {
+    this.getData()
   },
   watch: {
     area: [
-      function() {
-        this.page = 1;
+      function () {
+        this.page = 1
       },
       'getData'
     ],
     type: [
-      function() {
-        this.page = 1;
+      function () {
+        this.page = 1
       },
       'getData'
     ],
     order: [
-      function() {
-        this.page = 1;
+      function () {
+        this.page = 1
       },
       'getData'
     ]
   },
   methods: {
     // 页码改变
-    handleCurrentChange(val) {
-      this.page = val;
-      this.getData();
+    handleCurrentChange (val) {
+      this.page = val
+      this.getData()
     },
-    getData() {
-      const { area, type, order } = this;
+    getData () {
+      const { area, type, order } = this
       allMvs({
         area,
         type,
@@ -223,19 +223,17 @@ export default {
         offset: (this.page - 1) * this.limit
       }).then(res => {
         // window.console.log(res)
-        this.mvList = res.data;
+        this.mvList = res.data
         if (res.count) {
-          this.total = res.count;
+          this.total = res.count
         }
-      });
+      })
     },
-    toMv(id) {
-      this.$router.push(`/mv?id=${id}`);
+    toMv (id) {
+      this.$router.push(`/mv?id=${id}`)
     }
   }
-};
+}
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="less"></style>

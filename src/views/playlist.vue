@@ -52,7 +52,11 @@
                   <div class="name-wrap">
                     <span>{{ item.name }}</span>
                     <!-- mv图标 -->
-                    <span v-if="item.mv != 0" @click="toMV(item.mv)" class="iconfont icon-mv"></span>
+                    <span
+                      v-if="item.mv != 0"
+                      @click="toMV(item.mv)"
+                      class="iconfont icon-mv"
+                    ></span>
                   </div>
                   <span>{{ item.subTitle }}</span>
                 </div>
@@ -139,12 +143,12 @@
 </template>
 
 <script>
-import { playlistDetail, listComments, hotComments } from '@/api/playlist';
-import { songUrl } from '@/api/discovery';
-import moment from 'moment';
+import { playlistDetail, listComments, hotComments } from '@/api/playlist'
+import { songUrl } from '@/api/discovery'
+import moment from 'moment'
 export default {
   name: 'playlist',
-  data() {
+  data () {
     return {
       activeIndex: '1',
       tableData: [],
@@ -166,67 +170,67 @@ export default {
       page: 1,
       // 总条数
       total: 0
-    };
+    }
   },
   filters: {},
-  created() {
-    const { id } = this.$route.query;
+  created () {
+    const { id } = this.$route.query
     playlistDetail({
       id
     }).then(res => {
       // window.console.log(res)
       // 歌曲信息
-      this.tableData = res.playlist.tracks;
-      this.title = res.playlist.name;
-      this.avatarUrl = res.playlist.creator.avatarUrl;
-      this.coverImgUrl = res.playlist.coverImgUrl;
-      this.signature = res.playlist.creator.signature;
-      this.nickname = res.playlist.creator.nickname;
-      this.tags = res.playlist.tags;
-      this.createTime = moment(res.playlist.createTime).format('YYYY-MM-DD');
-    });
+      this.tableData = res.playlist.tracks
+      this.title = res.playlist.name
+      this.avatarUrl = res.playlist.creator.avatarUrl
+      this.coverImgUrl = res.playlist.coverImgUrl
+      this.signature = res.playlist.creator.signature
+      this.nickname = res.playlist.creator.nickname
+      this.tags = res.playlist.tags
+      this.createTime = moment(res.playlist.createTime).format('YYYY-MM-DD')
+    })
     // 获取热门评论
     hotComments({
       id
     }).then(res => {
-      this.hotComments = res.hotComments;
-    });
+      this.hotComments = res.hotComments
+    })
 
     // 获取评论信息
-    this.getComments();
+    this.getComments()
   },
   methods: {
-    toMV(id){
+    toMV (id) {
       this.$router.push(`/mv?id=${id}`)
     },
     // 获取歌曲评论
-    getComments() {
-      const { id } = this.$route.query;
+    getComments () {
+      const { id } = this.$route.query
       // 获取歌曲评论
       listComments({
         id,
         offset: (this.page - 1) * 5
       }).then(res => {
-        this.total = res.total;
-        this.comments = res.comments;
-      });
+        this.total = res.total
+        this.comments = res.comments
+      })
     },
     // 页码改变
-    handleCurrentChange(val) {
-      this.page = val;
-      this.getComments();
+    handleCurrentChange (val) {
+      this.page = val
+      this.getComments()
     },
-    playMusic(id) {
+    playMusic (id) {
       songUrl({
         id: id
       }).then(res => {
         // window.console.log(res)
         // this.songUrl = res.data[0].url
-        this.$parent.url = res.data[0].url;
-      });
+        this.$parent.url = res.data[0].url
+      })
     }
   }
-};
+}
 </script>
 
-<style lang="scss"></style>
+<style lang="less"></style>

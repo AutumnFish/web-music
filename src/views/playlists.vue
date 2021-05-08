@@ -106,7 +106,12 @@
       <!-- tab的内容区域 -->
       <div class="tab-content">
         <div class="items">
-          <div class="item" v-for="(item,index) in playList" :key="index" @click="toPlayList(item.id)">
+          <div
+            class="item"
+            v-for="(item, index) in playList"
+            :key="index"
+            @click="toPlayList(item.id)"
+          >
             <div class="img-wrap">
               <div class="num-wrap">
                 播放量:
@@ -134,10 +139,10 @@
 </template>
 
 <script>
-import { highquality, topList } from '@/api/playlists';
+import { highquality, topList } from '@/api/playlists'
 export default {
   name: 'recommend',
-  data() {
+  data () {
     return {
       // 歌单分类
       cat: '全部',
@@ -153,50 +158,48 @@ export default {
       page: 1,
       // 歌单列表
       playList: []
-    };
-  },
-  watch: {
-    cat() {
-      this.getData();
     }
   },
-  created() {
-    this.getData();
+  watch: {
+    cat () {
+      this.getData()
+    }
+  },
+  created () {
+    this.getData()
   },
   methods: {
     // 去歌单详情页面
-    toPlayList(id) {
-      this.$router.push(`/playlist?id=${id}`);
+    toPlayList (id) {
+      this.$router.push(`/playlist?id=${id}`)
     },
     // 获取歌单信息
-    getData() {
+    getData () {
       highquality({ cat: this.cat }).then(res => {
         if (res.playlists.length != 0) {
-          this.listName = res.playlists[0].name;
-          this.listDesc = res.playlists[0].description;
-          this.listCover = res.playlists[0].coverImgUrl;
+          this.listName = res.playlists[0].name
+          this.listDesc = res.playlists[0].description
+          this.listCover = res.playlists[0].coverImgUrl
         } else {
-          this.listName = '';
+          this.listName = ''
         }
-      });
+      })
       // 底部的歌单信息
       topList({
         cat: this.cat,
         offset: (this.page - 1) * 10
       }).then(res => {
         // window.console.log(res);
-        this.playList = res.playlists;
-        this.total = res.total;
-      });
+        this.playList = res.playlists
+        this.total = res.total
+      })
     },
-    handleCurrentChange(val) {
-      this.page = val;
-      this.getData();
+    handleCurrentChange (val) {
+      this.page = val
+      this.getData()
     }
   }
-};
+}
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="less"></style>

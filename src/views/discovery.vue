@@ -52,12 +52,12 @@
             <span class="iconfont icon-play"></span>
             <div class="num-wrap">
               <div class="iconfont icon-play"></div>
-              <div class="num">{{item.playCount}}</div>
+              <div class="num">{{ item.playCount }}</div>
             </div>
           </div>
           <div class="info-wrap">
-            <div class="name">{{item.copywriter}}</div>
-            <div class="singer">{{item.artistName}}</div>
+            <div class="name">{{ item.copywriter }}</div>
+            <div class="singer">{{ item.artistName }}</div>
           </div>
         </div>
       </div>
@@ -66,10 +66,10 @@
 </template>
 
 <script>
-import { banner, songlist, newsong,mv,songUrl } from '@/api/discovery';
+import { banner, songlist, newsong, mv, songUrl } from '@/api/discovery'
 export default {
   name: 'discovery',
-  data() {
+  data () {
     return {
       // 轮播图
       banners: [],
@@ -78,46 +78,44 @@ export default {
       // 新歌
       newsong: [],
       // mv
-      mv:[],
+      mv: [],
       // 歌曲url
-      songUrl:""
-    };
+      songUrl: ''
+    }
   },
-  created() {
+  created () {
     banner().then(res => {
-      this.banners = res.banners;
-    });
+      this.banners = res.banners
+    })
     songlist().then(res => {
       // window.console.log(res)
-      this.playList = res.result;
-    });
+      this.playList = res.result
+    })
     newsong().then(res => {
-      this.newsong = res.result;
-    });
-    mv().then(res=>{
+      this.newsong = res.result
+    })
+    mv().then(res => {
       this.mv = res.result
     })
   },
-  methods:{
-    toMv(id){
+  methods: {
+    toMv (id) {
       this.$router.push(`/mv?id=${id}`)
     },
-    toPlayList(id){
+    toPlayList (id) {
       this.$router.push(`/playlist?id=${id}`)
     },
-    playMusic(id){
+    playMusic (id) {
       songUrl({
-        id:id
-      }).then(res=>{
+        id: id
+      }).then(res => {
         // window.console.log(res)
         // this.songUrl = res.data[0].url
         this.$parent.url = res.data[0].url
       })
     }
   }
-};
+}
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="less"></style>

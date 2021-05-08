@@ -1,5 +1,5 @@
 <template>
-  <div class="songs-container" >
+  <div class="songs-container">
     <div class="tab-bar">
       <span class="item" :class="{ active: type == 0 }" @click="type = 0"
         >全部</span
@@ -37,14 +37,18 @@
           <td>
             <div class="img-wrap" @click="playMusic(item.id)">
               <img :src="item.album.picUrl" alt="" />
-              <span  class="iconfont icon-play" ></span>
+              <span class="iconfont icon-play"></span>
             </div>
           </td>
           <td>
             <div class="song-wrap">
               <div class="name-wrap">
                 <span>{{ item.name }}</span>
-                <span v-if="item.mvid != 0" class="iconfont icon-mv" @click='toMV(item.mvid)'></span>
+                <span
+                  v-if="item.mvid != 0"
+                  class="iconfont icon-mv"
+                  @click="toMV(item.mvid)"
+                ></span>
               </div>
               <span>{{ item.subTitle }}</span>
             </div>
@@ -61,47 +65,46 @@
 </template>
 
 <script>
-import { topSongs } from '@/api/songs';
-import { songUrl } from '@/api/discovery';
+import { topSongs } from '@/api/songs'
+import { songUrl } from '@/api/discovery'
 export default {
   name: 'songs',
-  data() {
+  data () {
     return {
       type: 0,
-      tableData: [],
-    
-    };
+      tableData: []
+    }
   },
   methods: {
-    toMV(id){
+    toMV (id) {
       this.$router.push(`/mv?id=${id}`)
     },
-    getData() {
+    getData () {
       topSongs({
         type: this.type
       }).then(res => {
-        this.tableData = res.data;
-      });
+        this.tableData = res.data
+      })
     },
-    playMusic(id) {
+    playMusic (id) {
       songUrl({
         id: id
       }).then(res => {
         // window.console.log(res)
         // this.songUrl = res.data[0].url
-        this.$parent.url = res.data[0].url;
-      });
+        this.$parent.url = res.data[0].url
+      })
     }
   },
   watch: {
-    type() {
-      this.getData();
+    type () {
+      this.getData()
     }
   },
-  created() {
-    this.getData();
+  created () {
+    this.getData()
   }
-};
+}
 </script>
 
-<style lang="scss"></style>
+<style lang="less"></style>

@@ -9,7 +9,7 @@
       <!-- mv信息 -->
       <div class="info-wrap">
         <div class="singer-info">
-          <div class='avatar-wrap'>
+          <div class="avatar-wrap">
             <img :src="artistCover" alt="" />
           </div>
           <span class="name">{{ artistName }}</span>
@@ -115,10 +115,10 @@
 </template>
 
 <script>
-import { mvUrl, simiMV, mvComments, mvDetail, artistInfo } from '@/api/mv';
+import { mvUrl, simiMV, mvComments, mvDetail, artistInfo } from '@/api/mv'
 export default {
   name: 'mv',
-  data() {
+  data () {
     return {
       // mv地址
       mvUrl: '',
@@ -146,70 +146,70 @@ export default {
       artistName: '',
       // 封面
       artistCover: ''
-    };
+    }
   },
 
   methods: {
     // 页码改变
-    handleCurrentChange(val) {
-      this.page = val;
-      this.getComments();
+    handleCurrentChange (val) {
+      this.page = val
+      this.getComments()
     },
     // 获取评论
-    getComments() {
-      const { id } = this.$route.query;
+    getComments () {
+      const { id } = this.$route.query
       mvComments({ id, offset: (this.page - 1) * 5 }).then(res => {
         // window.console.log(res)
         if (res.hotComments) {
-          this.hotComments = res.hotComments;
+          this.hotComments = res.hotComments
         }
-        this.comments = res.comments;
-        this.total = res.total;
-      });
+        this.comments = res.comments
+        this.total = res.total
+      })
     },
     // 获取信息
-    getInfo() {
-      const { id } = this.$route.query;
+    getInfo () {
+      const { id } = this.$route.query
       mvUrl({ id }).then(res => {
-        this.mvUrl = res.data.url;
-      });
+        this.mvUrl = res.data.url
+      })
       simiMV({ mvid: id }).then(res => {
         // window.console.log(res)
-        this.simiMV = res.mvs;
-      });
+        this.simiMV = res.mvs
+      })
       // 获取评论
-      this.getComments();
+      this.getComments()
       // 获取MV详情
       mvDetail({ mvid: id }).then(res => {
-        this.mvName = res.data.name;
-        this.playCount = res.data.playCount;
-        this.publishTime = res.data.publishTime;
-        this.desc = res.data.desc;
+        this.mvName = res.data.name
+        this.playCount = res.data.playCount
+        this.publishTime = res.data.publishTime
+        this.desc = res.data.desc
         artistInfo({
           artistId: res.data.artistId
         }).then(res => {
           // 歌手名
-          this.artistName = res.artist.name;
-          this.artistCover = res.artist.picUrl;
-        });
-      });
+          this.artistName = res.artist.name
+          this.artistCover = res.artist.picUrl
+        })
+      })
     },
     // 切换mv
-    toMV(id) {
-      this.$router.push(`/mv?id=${id}`);
+    toMV (id) {
+      this.$router.push(`/mv?id=${id}`)
     }
   },
   // 侦听器
   watch: {
-    '$route.query.id'() {
-      this.page = 1;
-      this.getInfo();
+    '$route.query.id' () {
+      this.page = 1
+      this.getInfo()
     }
   },
-  created() {
-    this.getInfo();
+  created () {
+    this.getInfo()
   }
-};
+}
 </script>
 
-<style lang="scss"></style>
+<style lang="less"></style>

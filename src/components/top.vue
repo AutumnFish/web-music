@@ -12,7 +12,12 @@
       </div>
     </div>
     <div class="right-box">
-      <el-input size="small" @keyup.enter.native="toResult" placeholder="搜索" v-model.trim="query">
+      <el-input
+        size="small"
+        @keyup.enter.native="toResult"
+        placeholder="搜索"
+        v-model.trim="query"
+      >
         <i slot="prefix" class="el-input__icon el-icon-search"></i>
       </el-input>
     </div>
@@ -22,23 +27,21 @@
 <script>
 export default {
   name: 'top',
-  data(){
+  data () {
     return {
-      query:''
+      query: ''
     }
   },
-  methods:{
-    toResult(){
-      if(!this.query){
+  methods: {
+    toResult () {
+      if (!this.query) {
         this.$message.warning('请输入查询内容')
-      }else{
+      } else {
         this.$router.push(`/result?keywords=${this.query}`)
       }
     }
-  },
-};
+  }
+}
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="less" scoped></style>
